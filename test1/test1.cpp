@@ -1,7 +1,11 @@
 #include <iostream>
 #include <string>
+#include <sstream>
+#include <windows.h>
+#include <dbghelp.h>
+#include "..\test.h"
 
-string TraceStack() {
+std::string TraceStack() {
     static const int MAX_STACK_FRAMES = 5;
 	
 	void *pStack[MAX_STACK_FRAMES];
@@ -38,8 +42,6 @@ string TraceStack() {
 }
 
 
-int fun4(){
-    TraceStack();
-    std::cout << "hello" << "world" << std::endl;
-    return 1;
+void fun4(){
+	fun3(10);
 }
